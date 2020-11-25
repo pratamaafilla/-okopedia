@@ -1,0 +1,38 @@
+User
+- userId PK
+- roleId FK
+- userName
+- userEmail (validation)
+- userPassword (validation)
+
+Role
+- roleId PK
+- roleName
+
+Product
+- productId PK
+- categoryId FK
+- productName
+- productPrice , not null, minimal 100
+- productDescription
+
+Category
+- categoryId PK
+- categoryName
+
+Cart
+- productId FK
+- quantity
+
+Transaction
+- transactionId PK
+- transactionDate
+
+TransactionDetail
+- transactionId FK
+- productId FK
+- quantity
+
+php artisan make:migration create_table_genres --create=genres
+php artisan make:seeder GenreSeeder
+php artisan make:model Genre
