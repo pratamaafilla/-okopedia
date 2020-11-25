@@ -14,8 +14,14 @@ class CreateTableProducts extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->increments('id');
+            $table->unsignedInteger('category_id');
+            $table->string('image');
+            $table->string('name');
+            $table->unsignedInteger('price');
+            $table->longText('description');
+
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
