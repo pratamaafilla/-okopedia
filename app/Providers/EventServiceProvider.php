@@ -18,6 +18,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        //membuat event UserCreated dan listener AssignUserRole baru
+        'App\Events\UserCreated' => [
+            'App\Listeners\AssignUserRole',
+        ],
     ];
 
     /**
