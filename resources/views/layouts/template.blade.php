@@ -37,10 +37,7 @@
                 <ul class="nav navbar-nav text-right d-xl-flex ml-auto justify-content-xl-center align-items-xl-center">
 
                     @guest
-                        <li class="nav-item" role="presentation" style="margin-right: 5px;"><a
-                                class="nav-link active d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center"
-                                href="#"><img class="img-fluid d-xl-flex justify-content-xl-center align-items-xl-center"
-                                    src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}" style="width: 30px;"></a></li>
+                        
                         <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
                                 class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center" style="color: rgb(129,129,129);" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         @if(Route::has('register'))
@@ -49,6 +46,10 @@
                             </li>
                         @endif
                     @else
+                    <li class="nav-item" role="presentation" style="margin-right: 5px;"><a
+                                class="nav-link active d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center"
+                                href="#"><img class="img-fluid d-xl-flex justify-content-xl-center align-items-xl-center"
+                                    src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}" style="width: 30px;"></a></li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>

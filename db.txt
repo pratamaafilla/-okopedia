@@ -1,13 +1,10 @@
 User
 - userId PK
-- roleId FK
+- cartId FK
+- transactionId FK
 - userName
 - userEmail (validation)
 - userPassword (validation)
-
-Role
-- roleId PK
-- roleName
 
 Product
 - productId PK
@@ -21,14 +18,22 @@ Category
 - categoryName
 
 Cart
+- cartId PK 
+- userId FK
+
+CartItem
+- cartItemId PK
+- cartId FK
 - productId FK
 - quantity
 
 Transaction
 - transactionId PK
+- userId FK
 - transactionDate
 
 TransactionDetail
+- transactionDetailId PK
 - transactionId FK
 - productId FK
 - quantity

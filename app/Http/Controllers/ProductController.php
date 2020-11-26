@@ -19,10 +19,9 @@ class ProductController extends Controller
         if(count($request->all()) > 0){
             return $this->search($request);
         }else{
-            $products = Product::all();
             $products = Product::paginate(3);
+            return view('home', compact('products'));
         }
-        return view('home', compact('products'));
     }
 
     public function product($id, Request $request)
