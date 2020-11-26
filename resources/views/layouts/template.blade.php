@@ -15,26 +15,46 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg border rounded-0 navigation-clean-search">
-        <div class="container"><a class="navbar-brand text-success" href="#">$okopedia</a><button data-toggle="collapse" data-target="#navcol-2" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse justify-content-start" id="navcol-1">
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean-search">
+        <div class="container"><a class="navbar-brand text-success" href="#"
+                style="margin-left: 10px;">$okopedia</a><button data-toggle="collapse" data-target="#navcol-2"
+                class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
                 <form class="form-inline">
-                    <div class="form-group"><label for="search-field"><i class="fa fa-search" style="margin: 10px;"></i></label><input class="border rounded-0 form-control form-control-sm search-field" type="search" id="search-field" placeholder="Search"></div>
-                </form>
+                    <div class="form-group"><label for="search-field"><i class="fa fa-search"
+                                style="margin: 10px;"></i></label><input
+                            class="border rounded-0 shadow-lg form-control form-control-sm search-field" type="search"
+                            id="search-field" placeholder="Search" style="width: 343px;"></div>
+                </form><button class="btn btn-success btn-sm" type="button" style="margin-left: 10px;">Search</button>
                 <ul class="nav navbar-nav"></ul>
-        </div>
-        <div class="collapse navbar-collapse d-xl-flex justify-content-xl-end" id="navcol-2">
-            <ul class="nav navbar-nav">
-                <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="color: rgb(129,129,129);">Login</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color: rgb(129,129,129);">Register</a></li>
-                <li class="nav-item align-self-center" role="presentation">
-                    <div class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgb(129,129,129);margin: 5px;">Username</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+            </div>
+            <div class="collapse navbar-collapse d-lg-flex d-xl-flex justify-content-lg-end align-items-lg-center justify-content-xl-end align-items-xl-center"
+                id="navcol-2">
+                <ul class="nav navbar-nav text-right d-xl-flex ml-auto justify-content-xl-center align-items-xl-center">
+                    <li class="nav-item" role="presentation" style="margin-right: 5px;"><a
+                            class="nav-link active d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center"
+                            href="#"><img class="img-fluid d-xl-flex justify-content-xl-center align-items-xl-center"
+                                src="assets/img/icons8-shopping-cart-64.png" style="width: 30px;"></a></li>
+                    <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
+                            class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center" href="#"
+                            style="color: rgb(129,129,129);">Login</a></li>
+                    <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
+                            class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center" href="#"
+                            style="color: rgb(129,129,129);">Register</a></li>
+                    <li class="nav-item d-lg-flex align-items-lg-center visible" role="presentation"
+                        style="margin-left: 10px;">
+                        <div class="nav-item dropdown"><a
+                                class="dropdown-toggle d-lg-flex justify-content-lg-center align-items-lg-center"
+                                data-toggle="dropdown" aria-expanded="false" href="#"
+                                style="color: rgb(129,129,129);">Username</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
+                                    href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second
+                                    Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     @yield('content')
