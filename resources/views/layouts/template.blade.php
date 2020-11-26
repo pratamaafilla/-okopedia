@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>$okopedia</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}" defer></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}" defer></script>
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fonts/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/Footer-Basic.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/Navigation-with-Search.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <nav class="navbar navbar-light navbar-expand-lg navigation-clean-search">
-        <div class="container"><a class="navbar-brand text-success" href="#"
+        <div class="container"><a class="navbar-brand text-success" href="{{url('/')}}"
                 style="margin-left: 10px;">$okopedia</a><button data-toggle="collapse" data-target="#navcol-2"
                 class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span
                     class="navbar-toggler-icon"></span></button>
@@ -35,7 +38,7 @@
                     <li class="nav-item" role="presentation" style="margin-right: 5px;"><a
                             class="nav-link active d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center"
                             href="#"><img class="img-fluid d-xl-flex justify-content-xl-center align-items-xl-center"
-                                src="assets/img/icons8-shopping-cart-64.png" style="width: 30px;"></a></li>
+                                src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}" style="width: 30px;"></a></li>
                     <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
                             class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center" href="#"
                             style="color: rgb(129,129,129);">Login</a></li>
@@ -63,8 +66,6 @@
             <p class="copyright">$okopedia © 2020</p>
         </footer>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

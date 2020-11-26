@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div style="margin-top: 50px; margin-bottom: 50px;" class="container">
     <div class="card-deck">
         @foreach($products as $p)
@@ -13,8 +12,8 @@
                 <p class="card-text">Rp. {{$p->price}}</p>
             </div>
             <div class="card-footer">
-                <a style="width: 100%;" text href="#" class="btn btn-success">See
-                        Details</a>
+                <a style="width: 100%;" text href="{{url('/product/'.$p->id)}}" class="btn btn-success">See
+                    Details</a>
             </div>
         </div>
         @endforeach
@@ -23,7 +22,5 @@
 <div class="d-flex justify-content-center">
     {{$products->withQueryString()->links()}}
 </div>
-
-
 
 @endsection
