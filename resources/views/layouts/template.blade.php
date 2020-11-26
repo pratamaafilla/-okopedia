@@ -38,7 +38,8 @@
                     <li class="nav-item" role="presentation" style="margin-right: 5px;"><a
                             class="nav-link active d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center"
                             href="#"><img class="img-fluid d-xl-flex justify-content-xl-center align-items-xl-center"
-                                src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}" style="width: 30px;"></a></li>
+                                src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}" style="width: 30px;"></a>
+                    </li>
                     <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
                             class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center" href="#"
                             style="color: rgb(129,129,129);">Login</a></li>
