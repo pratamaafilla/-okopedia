@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        if($request != null){
+        if(count($request->all()) > 0){
             return $this->search($request);
         }else{
             $products = Product::all();
@@ -27,8 +27,12 @@ class ProductController extends Controller
 
     public function product($id, Request $request)
     {
-        // return $this->search($request);
-        $products = Product::where('id',$id)->first();
-        return view('product', compact('products'));
+        if(count($request->all()) > 0){
+            return $this->search($request);
+        }else{
+            $products = Product::where('id',$id)->first();
+            return view('product', compact('products'));
+        }
+        
     }
 }
