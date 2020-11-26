@@ -12,9 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/','HomeController@index');
-Route::get('/product/{id}','ProductController@index');
+Route::get('/','ProductController@index');
+Route::get('/product/{id}','ProductController@product');
 
 Auth::routes();
 
