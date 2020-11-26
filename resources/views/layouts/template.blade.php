@@ -33,6 +33,7 @@
             <div class="collapse navbar-collapse d-lg-flex d-xl-flex justify-content-lg-end align-items-lg-center justify-content-xl-end align-items-xl-center"
                 id="navcol-2">
                 <ul class="nav navbar-nav text-right d-xl-flex ml-auto justify-content-xl-center align-items-xl-center">
+
                     @guest
                         <li class="nav-item" role="presentation" style="margin-right: 5px;"><a
                                 class="nav-link active d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center"
@@ -61,6 +62,7 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+                            
                         </div>
                     </li>
                     @endguest
