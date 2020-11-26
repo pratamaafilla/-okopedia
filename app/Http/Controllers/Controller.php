@@ -11,11 +11,4 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
-    public function search($request){   
-        $search = $request->input('search');
-        $products = Product::where('name', 'like', "%$search%")->paginate(3);
-        
-        return view('home', compact('products'));
-    }
 }
