@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
+
+use App\Product;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $products = DB::table('products')->paginate(3);
+        $products = Product::all();
+        $products = Product::paginate(3);
         return view('home', compact('products'));
     }
 }
