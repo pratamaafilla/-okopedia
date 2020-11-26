@@ -5,7 +5,7 @@
 <div style="margin-top: 50px; margin-bottom: 50px;" class="container">
     <div class="card-deck">
         @foreach($products as $p)
-        <div class="card">
+        <div style="max-width: 400px;" class="card">
             <div class="card-body text-center">
                 <img style="max-width: 200px;" class="card-img-top" src="{{ asset('images/'.$p->image) }}" alt="">
                 <h5 style="margin-top: 20px;" class="card-title">{{$p->name}}</h5>

@@ -28,8 +28,10 @@
                     <div class="form-group"><label for="search-field"><i class="fa fa-search"
                                 style="margin: 10px;"></i></label><input
                             class="border rounded-0 shadow-lg form-control form-control-sm search-field" type="search"
-                            id="search-field" placeholder="Search" style="width: 343px;"></div>
-                </form><button class="btn btn-success btn-sm" type="button" style="margin-left: 10px;">Search</button>
+                            name="search" value="{{Request::input('search')}}" id="search-field" placeholder="Search"
+                            style="width: 343px;"></div>
+                    <button class="btn btn-success btn-sm" type="submit" style="margin-left: 10px;">Search</button>
+                </form>
                 <ul class="nav navbar-nav"></ul>
             </div>
             <div class="collapse navbar-collapse d-lg-flex d-xl-flex justify-content-lg-end align-items-lg-center justify-content-xl-end align-items-xl-center"
