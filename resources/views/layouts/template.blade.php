@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>$okopedia</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/fonts/font-awesome.min.css') }}" rel="stylesheet">
@@ -37,21 +36,24 @@
                 <ul class="nav navbar-nav text-right d-xl-flex ml-auto justify-content-xl-center align-items-xl-center">
 
                     @guest
-                        
-                        <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
-                                class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center" style="color: rgb(129,129,129);" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                        @if(Route::has('register'))
-                            <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
-                                class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center" style="color: rgb(129,129,129);" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
+                    <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
+                            class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center"
+                            style="color: rgb(129,129,129);" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                    @if(Route::has('register'))
+                    <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
+                            class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center"
+                            style="color: rgb(129,129,129);" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
                     @else
                     <li class="nav-item" role="presentation" style="margin-right: 5px;"><a
-                                class="nav-link active d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center"
-                                href="#"><img class="img-fluid d-xl-flex justify-content-xl-center align-items-xl-center"
-                                    src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}" style="width: 30px;"></a></li>
+                            class="nav-link active d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center"
+                            href="#"><img class="img-fluid d-xl-flex justify-content-xl-center align-items-xl-center"
+                                src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}" style="width: 30px;"></a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
@@ -59,13 +61,13 @@
                             <a class="dropdown-item" style="color: rgb(129,129,129);" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                {{ __('Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                            
+
                         </div>
                     </li>
                     @endguest

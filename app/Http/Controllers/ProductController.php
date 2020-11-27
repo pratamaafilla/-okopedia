@@ -34,4 +34,10 @@ class ProductController extends Controller
         }
         
     }
+
+    public function index_admin(){
+        $products = Product::all();
+
+        return view('admin', compact('products'));
+    }
 }

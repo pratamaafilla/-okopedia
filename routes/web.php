@@ -25,8 +25,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     //middleware kedua nested karena untuk cek logged in user punya role admin atau tidak, kalau punya user bisa akses route /admin
     Route::group(['middleware' => 'admin'], function () {
-        Route::get('/admin', function () {
-            return 'Admin Page';
-        });
+        Route::get('/admin','ProductController@index_admin');
     });
 });
