@@ -18,6 +18,8 @@ Route::get('/product/{id}','ProductController@product');
 Route::get('/delete/{id}','ProductController@index_admin_delete');
 Route::get('/admin/category_list','ProductController@index_admin_categorylist');
 Route::get('/admin/category_list/{id}','ProductController@search_product_by_category');
+Route::get('/admin/add_product','ProductController@index_admin_addproduct');
+
 
 Auth::routes();
 
