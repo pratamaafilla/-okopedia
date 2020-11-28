@@ -16,20 +16,22 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-        <div class="container"><a class="navbar-brand text-success" href="#">Admin</a><button data-toggle="collapse"
-                class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
-                    class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand text-success" href="{{url('/admin')}}">Admin</a><button
+                data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
+                    navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
                             aria-expanded="false" href="#">Products</a>
                         <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Add
-                                Product</a><a class="dropdown-item" role="presentation" href="#">Product List</a></div>
+                                Product</a><a class="dropdown-item" role="presentation" href="{{url('/admin')}}">Product
+                                List</a></div>
                     </li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
                             aria-expanded="false" href="#">Categories</a>
                         <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Add
-                                Category</a><a class="dropdown-item" role="presentation" href="#">Category List</a>
+                                Category</a><a class="dropdown-item" role="presentation"
+                                href="{{url('/admin/category_list')}}">Category List</a>
                         </div>
                     </li>
                 </ul>

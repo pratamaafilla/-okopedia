@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="table-responsive">
+<div style="margin-top: 50px;" class="table-responsive">
     <table class="table">
         <thead>
             <tr class="text-center text-success">
@@ -25,7 +25,7 @@
                 <td>{{$p->price}}</td>
                 <td>{{$p->description}}</td>
                 <td><a class="btn btn-primary" type="button" href="{{url('/delete/'.$p->id)}}"
-                        style="background-color: rgb(218,67,57); color: white;" >Delete</a></td>
+                        style="background-color: rgb(218,67,57); color: white;">Delete</a></td>
             </tr>
             @endforeach
         </tbody>

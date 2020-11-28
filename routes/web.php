@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','ProductController@index');
 Route::get('/product/{id}','ProductController@product');
 Route::get('/delete/{id}','ProductController@index_admin_delete');
+Route::get('/admin/category_list','ProductController@index_admin_categorylist');
+Route::get('/admin/category_list/{id}','ProductController@search_product_by_category');
 
 Auth::routes();
 

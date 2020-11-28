@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,6 +46,20 @@ class ProductController extends Controller
     public function index_admin_delete($id){
         DB::delete('delete from products where id = ?',[$id]);
 
-        return redirect('/admin');
+        return back();
+    }
+
+    public function index_admin_categorylist(){
+
+        $categories = Category::all();
+
+        return view('admin_category_list', compact('categories'));
+    }
+
+    public function search_product_by_category($id){
+        $products = Product::join('categories','products.category_id','=','categories.category_id')->where('products.category_id',$id)->get();
+        $categories = Category::all();
+
+        return view('admin_category_list', compact('products','categories'));
     }
 }
