@@ -21,11 +21,11 @@
                 <td>{{$p->id}}</td>
                 <td><img src="{{ asset('images/'.$p->image) }}" style="width: 35px;"></td>
                 <td>{{$p->name}}</td>
-                <td>{{$p->category_id}}</td>
+                <td>{{$p->category_name}}</td>
                 <td>{{$p->price}}</td>
                 <td>{{$p->description}}</td>
-                <td><button class="btn btn-primary" type="button"
-                        style="background-color: rgb(218,67,57);">Delete</button></td>
+                <td><a class="btn btn-primary" type="button" href="{{url('/delete/'.$p->id)}}"
+                        style="background-color: rgb(218,67,57); color: white;" >Delete</a></td>
             </tr>
             @endforeach
         </tbody>

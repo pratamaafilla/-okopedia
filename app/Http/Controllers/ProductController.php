@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -36,8 +37,14 @@ class ProductController extends Controller
     }
 
     public function index_admin(){
-        $products = Product::all();
+        $products = DB::table('products')->join('categories','products.category_id','=','categories.category_id')->get();
 
         return view('admin', compact('products'));
+    }
+
+    public function index_admin_delete($id){
+        DB::delete('delete from products where id = ?',[$id]);
+
+        return redirect('/admin');
     }
 }

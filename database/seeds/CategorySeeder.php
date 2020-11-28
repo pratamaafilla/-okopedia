@@ -13,9 +13,9 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            ['name' => 'Smartphone'],
-            ['name' => 'Laptop'],
-            ['name' => 'TV']
+            ['category_name' => 'Smartphone'],
+            ['category_name' => 'Laptop'],
+            ['category_name' => 'TV']
         ]);
     }
 }

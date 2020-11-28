@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/','ProductController@index');
 Route::get('/product/{id}','ProductController@product');
+Route::get('/delete/{id}','ProductController@index_admin_delete');
 
 Auth::routes();
 
