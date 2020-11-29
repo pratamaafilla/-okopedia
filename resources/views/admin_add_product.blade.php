@@ -3,21 +3,35 @@
 @section('content')
 
 <div class="login-clean" style="background-color: rgb(255,255,255);padding-top: 0px;padding-bottom: 0px;">
-    @if(!$error)
+    {{--@if(!$error == "false")
     <div class="d-flex justify-content-lg-center">
         <div class="alert alert-success" role="alert" style="width: 50%;"><button type="button" class="close"
                 data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>Product
                     added.</strong></span>
         </div>
     </div>
-    @elseif($error)
+    @elseif($error == "true")
+    <div class="d-flex justify-content-lg-center">
+        <div class="alert alert-danger" role="alert" style="width: 50%;"><button type="button" class="close"
+                data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>Please
+                    fill in all details.</strong></div>
+    </div>
+    @elseif($error == "null")
+        <div></div>
+    
+    @endif--}}
+
+    @if($errors->any())
     <div class="d-flex justify-content-lg-center">
         <div class="alert alert-danger" role="alert" style="width: 50%;"><button type="button" class="close"
                 data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>Please
                     fill in all details.</strong></div>
     </div>
     @endif
-    <form>
+
+
+    <form action="/admin/add_product/upload" method="POST" enctype="multipart/form-data" name="addproduct">
+        {{ csrf_field() }}
         <div class="form-group"><input class="form-control" type="text" name="name" value="{{Request::input('name')}}"
                 placeholder="Name"></div>
         <div class="form-group">
