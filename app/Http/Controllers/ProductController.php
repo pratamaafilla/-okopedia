@@ -74,11 +74,11 @@ class ProductController extends Controller
     public function upload_product(Request $request){
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:products,name',
             'category' => 'required',
             'description' => 'required',
-            'price' => 'required',
-            'image' => 'required',
+            'price' => 'required|numeric|min:100',
+            'image' => 'required|image|max:10000',
         ]);
         
         $name = $request->input('name');
@@ -94,6 +94,25 @@ class ProductController extends Controller
                 
         DB::table('products')->insert(
             ['name' => $name, 'category_id' => $category, 'description'=> $description, 'price' => $price, 'image' => $image]
+        );
+        return back();
+    }
+
+    public function index_admin_addcategory(){
+
+        $categories = Category::all();
+        
+        return view('admin_add_category', compact('categories'));
+    }
+
+    public function upload_category(Request $request){
+        $request->validate([
+            'name' => 'required|unique:categories,category_name',
+        ]);
+        $name = $request->input('name');
+
+        DB::table('categories')->insert(
+            ['category_name' => $name]
         );
         return back();
     }

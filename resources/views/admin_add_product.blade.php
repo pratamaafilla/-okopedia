@@ -3,30 +3,17 @@
 @section('content')
 
 <div class="login-clean" style="background-color: rgb(255,255,255);padding-top: 0px;padding-bottom: 0px;">
-    {{--@if(!$error == "false")
-    <div class="d-flex justify-content-lg-center">
-        <div class="alert alert-success" role="alert" style="width: 50%;"><button type="button" class="close"
-                data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>Product
-                    added.</strong></span>
-        </div>
-    </div>
-    @elseif($error == "true")
-    <div class="d-flex justify-content-lg-center">
-        <div class="alert alert-danger" role="alert" style="width: 50%;"><button type="button" class="close"
-                data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>Please
-                    fill in all details.</strong></div>
-    </div>
-    @elseif($error == "null")
-        <div></div>
-    
-    @endif--}}
-
     @if($errors->any())
+    @foreach($errors->all() as $error)
     <div class="d-flex justify-content-lg-center">
+
         <div class="alert alert-danger" role="alert" style="width: 50%;"><button type="button" class="close"
-                data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>Please
-                    fill in all details.</strong></div>
+                data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">×</span></button><span><strong>{{ $error }}</strong>
+        </div>
+
     </div>
+    @endforeach
     @endif
 
 
@@ -54,7 +41,7 @@
     </form>
 </div>
 <div>
-    <div class="container">
+    <div class="container" style="width: 826px;">
         <div class="row d-md-flex justify-content-center justify-content-md-center" style="margin-top: 50px;">
             <div class="col-md-4 col-lg-11 offset-lg-0 align-self-center">
                 <div class="table-responsive">

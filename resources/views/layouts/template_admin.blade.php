@@ -32,7 +32,8 @@
                     </li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
                             aria-expanded="false" href="#">Categories</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Add
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
+                                href="{{url('/admin/add_category')}}">Add
                                 Category</a><a class="dropdown-item" role="presentation"
                                 href="{{url('/admin/category_list')}}">Category List</a>
                         </div>
