@@ -20,9 +20,9 @@ class AdminCheck
         // roles dapat diakses dengan menggunakan eloquent laravel
         $userRoles = Auth::user()->roles->pluck('name');
 
-        //kalo misalnya user yang sudah login tidak punya role admin, redirect ke home
+        //kalo misalnya user yang sudah login tidak punya role admin, redirect ke no-access page
         if(!$userRoles->contains('admin')){
-            return redirect('/');
+            return redirect('/user-no-access');
         }
 
         //kalo user punya role admin, lanjutkan request
