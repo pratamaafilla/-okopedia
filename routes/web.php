@@ -12,19 +12,26 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','ProductController@index');
-Route::get('/product/{id}','ProductController@product');
-
 Auth::routes();
 
-//middleware pertama ini untuk cek user autehnticated atau belum, kalau sudah dia bisa akses route /user
+//middleware untuk guest
+Route::group(['middleware' => 'guestMiddleware'], function () {
+    Route::get('/','ProductController@index');
+    Route::get('/product/{id}','ProductController@product');
+});
+
+//middleware pertama ini untuk cek user authenticated (login) tau belum, kalau sudah dia bisa akses route /user
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/user', function () {
-        return 'User Page';
+    Route::get('/user-no-access','NoAccessController@userNoAccess');
+    Route::get('/admin-no-access','NoAccessController@adminNoAccess');
+
+    //middleware ini nested karena untuk cek logged in user punya role user atau tidak, kalau punya, ser bisa akses route /user
+    Route::group(['middleware' => 'user'], function () {
+        Route::get('/user-page','ProductController@index');
     });
 
-    //middleware kedua nested karena untuk cek logged in user punya role admin atau tidak, kalau punya user bisa akses route /admin
+    //middleware kedua nested karena untuk cek logged in user punya role admin atau tidak, kalau punya, user bisa akses route /admin
     Route::group(['middleware' => 'admin'], function () {
-        Route::get('/admin','ProductController@index_admin');
+        Route::get('/admin-page','ProductController@index_admin');
     });
 });
