@@ -27,7 +27,7 @@
                             aria-expanded="false" href="#">Products</a>
                         <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
                                 href="{{url('/admin/add_product')}}">Add
-                                Product</a><a class="dropdown-item" role="presentation" href="{{url('/admin')}}">Product
+                                Product</a><a class="dropdown-item" role="presentation" href="{{url('/admin-page')}}">Product
                                 List</a></div>
                     </li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
