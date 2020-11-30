@@ -12,6 +12,8 @@
     <link href="{{ asset('assets/css/Footer-Basic.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/Navigation-with-Search.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/Login-Form-Clean.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/Navigation-Clean.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -23,13 +25,17 @@
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
                             aria-expanded="false" href="#">Products</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Add
-                                Product</a><a class="dropdown-item" role="presentation" href="#">Product List</a></div>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
+                                href="{{url('/admin/add_product')}}">Add
+                                Product</a><a class="dropdown-item" role="presentation" href="{{url('/admin')}}">Product
+                                List</a></div>
                     </li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
                             aria-expanded="false" href="#">Categories</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Add
-                                Category</a><a class="dropdown-item" role="presentation" href="#">Category List</a>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
+                                href="{{url('/admin/add_category')}}">Add
+                                Category</a><a class="dropdown-item" role="presentation"
+                                href="{{url('/admin/category_list')}}">Category List</a>
                         </div>
                     </li>
                 </ul>
