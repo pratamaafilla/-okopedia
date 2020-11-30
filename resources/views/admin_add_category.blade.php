@@ -8,7 +8,8 @@
     @foreach($errors->all() as $error)
     <div class="d-flex justify-content-lg-center">
         <div class="alert alert-danger" role="alert" style="width: 50%;"><button type="button" class="close"
-                data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>{{ $error }}</strong></span></div>
+                data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">×</span></button><span><strong>{{ $error }}</strong></span></div>
     </div>
     @endforeach
     @endif
