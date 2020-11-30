@@ -5,11 +5,12 @@
 
 <div class="login-clean" style="background-color: rgb(255,255,255);padding-top: 0px;padding-bottom: 0px;">
     @if($errors->any())
+    @foreach($errors->all() as $error)
     <div class="d-flex justify-content-lg-center">
         <div class="alert alert-danger" role="alert" style="width: 50%;"><button type="button" class="close"
-                data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>Please
-                    fill in all details.</strong></span></div>
+                data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>{{ $error }}</strong></span></div>
     </div>
+    @endforeach
     @endif
     <form action="/admin/add_category/upload" method="POST" enctype="multipart/form-data" name="addcategory">
         {{ csrf_field() }}
