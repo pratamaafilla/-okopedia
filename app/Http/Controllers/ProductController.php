@@ -5,35 +5,45 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
     function search($request){   
+        $user_id = Auth::id();
+        $count = DB::table('cartitems')->where('user_id',$user_id)->count();
+
         $search = $request->input('search');
         $products = Product::where('name', 'like', "%$search%")->paginate(3);
         
-        return view('home', compact('products'));
+        return view('home', compact('products','count'));
     }
 
     public function index(Request $request)
     {
+        $user_id = Auth::id();
+        $count = DB::table('cartitems')->where('user_id',$user_id)->count();
+        
         if(count($request->all()) > 0){
             return $this->search($request);
         }else{
             $products = Product::paginate(3);
-            return view('home', compact('products'));
+            return view('home', compact('products','count'));
         }
     }
 
     public function product($id, Request $request)
     {
+        $user_id = Auth::id();
+        $count = DB::table('cartitems')->where('user_id',$user_id)->count();
+
         if(count($request->all()) > 0){
             return $this->search($request);
         }else{
             $products = Product::where('id',$id)->first();
-            return view('product', compact('products'));
+            return view('product', compact('products','count'));
         }
         
     }

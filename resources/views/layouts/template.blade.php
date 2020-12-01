@@ -48,9 +48,9 @@
                     @else
 
                     <li class="nav-item" role="presentation" style="margin-right: 5px;">
-                        <a class="nav-link" href="{{url ('#')}}">
+                        <a class="nav-link" href="{{url ('cart')}}">
                             <img style="width: 25px;" src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}">
-                            <span class='badge badge-success' id='lblCartCount'> 0 </span>
+                            <span class='badge badge-success' id='lblCartCount'> {{$count}} </span>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
