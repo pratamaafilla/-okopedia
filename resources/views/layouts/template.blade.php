@@ -46,10 +46,12 @@
                     </li>
                     @endif
                     @else
-                    <li class="nav-item" role="presentation" style="margin-right: 5px;"><a
-                            class="nav-link active d-lg-flex d-xl-flex align-items-lg-center justify-content-xl-center align-items-xl-center"
-                            href="#"><img class="img-fluid d-xl-flex justify-content-xl-center align-items-xl-center"
-                                src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}" style="width: 30px;"></a>
+
+                    <li class="nav-item" role="presentation" style="margin-right: 5px;">
+                        <a class="nav-link" href="{{url ('#')}}">
+                            <img style="width: 25px;" src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}">
+                            <span class='badge badge-success' id='lblCartCount'> 0 </span>
+                        </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
