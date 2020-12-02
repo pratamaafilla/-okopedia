@@ -17,7 +17,7 @@
 
 @foreach($products as $p)
 <div class="d-flex justify-content-center">
-    <div style="margin-top: 10px; max-width: 500px;" class="d-flex justify-content-center card mb-3">
+    <div style="margin-top: 50px; max-width: 500px;" class="d-flex justify-content-center card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4 align-self-center">
                 <img style="max-width: 200px;" src="{{ asset('images/'.$p->image) }}" class="card-img" alt="...">

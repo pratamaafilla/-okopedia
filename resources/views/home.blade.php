@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div style="margin-top: 50px; margin-bottom: 50px;" class="container">
+<div style="margin-top: 50px; margin-bottom: 50px;" class="d-flex justify-content-center container">
     <div class="card-deck">
         @foreach($products as $p)
         <div style="max-width: 300px;" class="card">
