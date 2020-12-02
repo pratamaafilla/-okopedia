@@ -26,7 +26,7 @@
                                 style="margin: 10px;"></i></label><input
                             class="border rounded-0 shadow-lg form-control form-control-sm search-field" type="search"
                             name="search" value="{{Request::input('search')}}" id="search-field" placeholder="Search"
-                            style="width: 343px;"></div>
+                            style="width: 400px;"></div>
                     <button class="btn btn-success btn-sm" type="submit" style="margin-left: 10px;">Search</button>
                 </form>
                 <ul class="nav navbar-nav"></ul>
@@ -46,13 +46,16 @@
                     </li>
                     @endif
                     @else
-
+                    
                     <li class="nav-item" role="presentation" style="margin-right: 5px;">
-                        <a class="nav-link" href="{{url ('cart')}}">
+                        <a class="nav-link" href="{{url ('/cart')}}">
                             <img style="width: 25px;" src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}">
                             <span class='badge badge-success' id='lblCartCount'> {{$count}} </span>
                         </a>
                     </li>
+                    <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"
+                        style="margin-left: 0px;margin-right: 10px;"><a href="{{url('/history')}}" style="color: white;" class="btn btn-success btn-sm"
+                            type="button">History</a></li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -43,6 +43,20 @@
     </div>
 </div>
 @endforeach
-
-
+<div class="justify-content-xl-center align-items-xl-center footer-basic">
+    <nav
+        class="navbar navbar-light navbar-expand fixed-bottom d-xl-flex justify-content-xl-center align-items-xl-center navigation-clean-button">
+        <div class="container-fluid"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span
+                    class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav mx-auto">
+                    <li class="nav-item" role="presentation">
+                        <a href="{{url('/cart/checkout')}}" class="btn btn-success action-button" type="button"
+                            style="color: white; width: 350px;">Checkout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 @endsection
