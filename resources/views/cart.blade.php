@@ -24,6 +24,7 @@
             </div>
             <div class="col-md-8">
                 <form action="/cart/{{$p->product_id}}">
+                @csrf
                     <div class="card-body">
                         <h5 class="card-title">{{$p->name}}</h5>
                         <p class="card-text">Rp{{$p->price}}</p>
@@ -45,15 +46,20 @@
 @endforeach
 @if(!$empty)
 <div class="justify-content-xl-center align-items-xl-center footer-basic">
-    <nav
-        class="navbar navbar-light navbar-expand fixed-bottom d-xl-flex justify-content-xl-center align-items-xl-center navigation-clean-button">
+    <nav class="navbar navbar-light navbar-expand fixed-bottom d-xl-flex justify-content-xl-center align-items-xl-center navigation-clean-button">
         <div class="container-fluid"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span
                     class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mx-auto">
                     <li class="nav-item" role="presentation">
-                        <a href="{{url('/cart/checkout')}}" class="btn btn-success" type="button"
-                            style="color: white; width: 350px;">Checkout</a>
+                        <form action="{{ url('/cart/checkOut') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{Auth::id()}}">
+                            @foreach($products as $s)
+                                <input type="hidden" name="cart_id[]" value="{{$s ->cart_item_id}}">
+                            @endforeach
+                            <button class="btn btn-success" type="submit" style="color: white; width: 350px;">Checkout</button>
+                        </form>
                     </li>
                 </ul>
             </div>

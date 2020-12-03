@@ -52,6 +52,28 @@ class CartController extends Controller{
         return back();
     }
 
+    public function checkOut(Request $request){
+        $user = $request->user_id;
+        $transaction_id = DB::table('transactions')->insertGetId([
+            'user_id' => $user,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+
+        $products = DB::table('cartitems')->where('user_id',$user)->get();
+
+        foreach($products as $i => $product){
+            $arr[] = [
+                'transaction_id' => $transaction_id,
+                'product_id' => $product->product_id,
+                'quantity' => $product->quantity,
+            ];
+        }
+        DB::table('transactiondetails')->insert($arr);
+        DB::delete('delete from cartitems where user_id = ?',[$user]);
+
+        return redirect('/');
+    }
+
     public function update($id, Request $request){
         $user_id = Auth::id();
         $request->validate([
@@ -60,32 +82,33 @@ class CartController extends Controller{
         
         $quantity = $request->input('quantity');
 
-        DB::update('update cartitems set quantity = ? where product_id = ? and user_id = ?', [$quantity,$id,$user_id]);
+        //DB::update('update cartitems set quantity = ? where product_id = ? and user_id = ?', [$quantity,$id,$user_id]);
+        DB::table('cartitems')->where('user_id',$user_id)->update(['quantity'=>$quantity]);
         
         return back();
     }
 
-    public function checkout(){
-        $user_id = Auth::id();
+    // public function checkOut(){
+    //     // $user_id = Auth::user()->id;
 
-        $transaction_id = DB::table('transactions')->insertGetId([
-            'user_id' => $user_id,
-            'created_at' => date('Y-m-d H:i:s')
-        ]);
+        // $transaction_id = DB::table('transactions')->insertGetId([
+        //     'user_id' => $user_id,
+        //     'created_at' => date('Y-m-d H:i:s')
+        // ]);
 
-        $products = DB::table('cartitems')->where('user_id',$user_id)->get();
+        // $products = DB::table('cartitems')->where('user_id',$user_id)->get();
 
-        foreach($products as $i => $products){
-            $arr[] = [
-                'transaction_id' => $transaction_id,
-                'product_id' => $products->product_id[$i],
-                'quantity' => $products->quantity[$i]
-            ];
-        }
+        // foreach($products as $i => $products){
+        //     $arr[] = [
+        //         'transaction_id' => $transaction_id,
+        //         'product_id' => $products->product_id[$i],
+        //         'quantity' => $products->quantity[$i]
+        //     ];
+        // }
 
-        DB::table('transactiondetails')->insert($arr);
-        DB::delete('delete from cartitems where user_id = ?',[$user_id]);
+        // DB::table('transactiondetails')->insert($arr);
+        // DB::delete('delete from cartitems where user_id = ?',[$user_id]);
 
-        return back();
-    }
+        // return redirect('/');
+    // }
 }
