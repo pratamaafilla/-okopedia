@@ -22,7 +22,18 @@ Route::group(['middleware' => 'auth'], function () {
     //middleware kedua nested karena untuk cek logged in user punya role admin atau tidak, kalau punya user bisa akses route /admin
     Route::get('/user-no-access','NoAccessController@userNoAccess');
     Route::get('/admin-no-access','NoAccessController@adminNoAccess');
+
     Route::get('/product/{id}','ProductController@product');
+    Route::post('/product/{id}','CartController@add_to_cart');
+
+    Route::get('/cart','CartController@index');
+    Route::get('/cart/checkout','CartController@checkout');
+    
+    Route::get('/cart/delete/{id}','CartController@delete');
+    Route::get('/cart/{id}','CartController@update');
+
+    Route::get('/history','TransactionController@index');
+    Route::get('/history/{id}','TransactionController@transaction_detail');
 
     //middleware kedua nested karena untuk cek logged in user punya role admin atau tidak, kalau punya, user bisa akses route /admin
     Route::group(['middleware' => 'admin'], function () {

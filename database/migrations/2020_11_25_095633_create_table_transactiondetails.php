@@ -14,8 +14,15 @@ class CreateTableTransactiondetails extends Migration
     public function up()
     {
         Schema::create('transactiondetails', function (Blueprint $table) {
-            $table->id();
+            $table->increments('transaction_detail_id');
+            $table->unsignedInteger('transaction_id');
+            $table->unsignedInteger('product_id');
+            $table->unsignedInteger('quantity');
             $table->timestamps();
+
+            $table->foreign('transaction_id')->references('transaction_id')->on('transactions')->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
