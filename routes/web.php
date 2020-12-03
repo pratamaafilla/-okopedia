@@ -27,11 +27,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/product/{id}','CartController@add_to_cart');
 
     Route::get('/cart','CartController@index');
+    Route::get('/cart/checkout','CartController@checkout');
+    
     Route::get('/cart/delete/{id}','CartController@delete');
     Route::get('/cart/{id}','CartController@update');
-    Route::post('/cart/checkOut','CartController@checkOut');
 
     Route::get('/history','TransactionController@index');
+    Route::get('/history/{id}','TransactionController@transaction_detail');
 
     //middleware kedua nested karena untuk cek logged in user punya role admin atau tidak, kalau punya, user bisa akses route /admin
     Route::group(['middleware' => 'admin'], function () {

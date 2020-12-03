@@ -56,7 +56,7 @@
                                             <tr>
                                                 <td style="width: 104px;">Quantity</td>
                                                 <td><input class="border rounded-0" type="number" name="quantity"
-                                                        style="width: 50px;" value="0"></td>
+                                                        style="width: 50px;" value="1"></td>
                                             </tr>
                                         </tbody>
                                     </table>
