@@ -28,8 +28,8 @@
                         <h5 class="card-title">{{$p->name}}</h5>
                         <p class="card-text">Rp{{$p->price}}</p>
                         <p class="card-text">
-                            <input placeholder="{{$p->quantity}}" class="border rounded-0" type="number" name="quantity"
-                                style="width: 50px;" value="{{Request::input('quantity')}}">
+                            <input class="border rounded-0" type="number" name="quantity"
+                                style="width: 50px;" value="{{$p->quantity}}">
                         </p>
                         <p class="card-text">
                             <button class="btn btn-success btn-sm" type="submit">Update</button>
@@ -43,6 +43,7 @@
     </div>
 </div>
 @endforeach
+@if(!$empty)
 <div class="justify-content-xl-center align-items-xl-center footer-basic">
     <nav
         class="navbar navbar-light navbar-expand fixed-bottom d-xl-flex justify-content-xl-center align-items-xl-center navigation-clean-button">
@@ -51,7 +52,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mx-auto">
                     <li class="nav-item" role="presentation">
-                        <a href="{{url('/cart/checkout')}}" class="btn btn-success action-button" type="button"
+                        <a href="{{url('/cart/checkout')}}" class="btn btn-success" type="button"
                             style="color: white; width: 350px;">Checkout</a>
                     </li>
                 </ul>
@@ -59,4 +60,5 @@
         </div>
     </nav>
 </div>
+@endif
 @endsection

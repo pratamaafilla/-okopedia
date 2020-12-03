@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -11,10 +10,17 @@ class CartController extends Controller{
     
     public function index(){
         $user_id = Auth::id();
+        $count = DB::table('cartitems')->where('user_id',$user_id)->count();
 
         $products = DB::table('cartitems')->join('products','cartitems.product_id','=','products.id')->where('user_id',$user_id)->get();
-        $count = DB::table('cartitems')->where('user_id',$user_id)->count();
-        return view('cart',compact('products','count'));
+
+        if($count == 0){
+            $empty = true;
+        }else{
+            $empty = false;
+        }
+        
+        return view('cart',compact('products','count','empty'));
     }
 
     public function add_to_cart($id, Request $request){
@@ -49,7 +55,7 @@ class CartController extends Controller{
     public function update($id, Request $request){
         $user_id = Auth::id();
         $request->validate([
-            'quantity' => 'required|numeric|min:1',
+            'quantity' => 'numeric|min:1',
         ]);
         
         $quantity = $request->input('quantity');
@@ -60,5 +66,26 @@ class CartController extends Controller{
     }
 
     public function checkout(){
+        $user_id = Auth::id();
+
+        $transaction_id = DB::table('transactions')->insertGetId([
+            'user_id' => $user_id,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+
+        $products = DB::table('cartitems')->where('user_id',$user_id)->get();
+
+        foreach($products as $i => $products){
+            $arr[] = [
+                'transaction_id' => $transaction_id,
+                'product_id' => $products->product_id[$i],
+                'quantity' => $products->quantity[$i]
+            ];
+        }
+
+        DB::table('transactiondetails')->insert($arr);
+        DB::delete('delete from cartitems where user_id = ?',[$user_id]);
+
+        return back();
     }
 }
