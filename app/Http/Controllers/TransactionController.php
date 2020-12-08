@@ -10,7 +10,10 @@ class TransactionController extends Controller{
         $user_id = Auth::id();
         $count = DB::table('cartitems')->where('user_id',$user_id)->count();
 
-        $transactions = DB::table('transactions')->where('user_id',$user_id)->get();
+        //Tampilin semua data transaction user
+        $transactions = DB::table('transactions')
+        ->where('user_id',$user_id)
+        ->get();
 
         return view('history',compact('count','transactions'));
     }
@@ -19,6 +22,8 @@ class TransactionController extends Controller{
         $user_id = Auth::id();
         $count = DB::table('cartitems')->where('user_id',$user_id)->count();
 
+        //Tampilin transaction detailnya
+        //Join table transaction, products buat nampilin productnya
         $products = DB::table('transactiondetails')
         ->join('products','transactiondetails.product_id','=','products.id')
         ->join('transactions','transactiondetails.transaction_id','=','transactions.transaction_id')

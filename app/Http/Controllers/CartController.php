@@ -9,16 +9,20 @@ use Illuminate\Support\Facades\DB;
 class CartController extends Controller{
     
     public function index(){
+        //Buat nampilin total product yang ada di cart user
         $user_id = Auth::id();
         $count = DB::table('cartitems')
         ->where('user_id',$user_id)
         ->count();
 
+        //Ngambil data cartitems dengan join table products
         $products = DB::table('cartitems')
         ->join('products','cartitems.product_id','=','products.id')
         ->where('user_id',$user_id)
         ->get();
 
+        //Kalo gaada product, button checkout di ilangin
+        //$empty buat ngasih tau ke blade nya
         if($count == 0){
             $empty = true;
         }else{
@@ -29,6 +33,7 @@ class CartController extends Controller{
     }
 
     public function add_to_cart($id, Request $request){
+        //Validasi request quantity nya
         $request->validate([
             'quantity' => 'required|numeric|min:1',
         ]);
@@ -36,12 +41,16 @@ class CartController extends Controller{
         $quantity = $request->input('quantity');
         $user_id = Auth::id();
         
+        //Ambil product_id yang sama dengan product yang dipilih user
+        //Buat ngecek udah ada atau blom di cart nya
         $product_id = DB::table('cartitems')->where('product_id',$id)->where('user_id',$user_id)->first();
-        if($product_id == null){
+
+        
+        if($product_id == null){ //Kalau product nya blm ada, masukin ke cart
             DB::table('cartitems')->insert(
                 ['user_id' => $user_id, 'product_id' => $id, 'quantity'=> $quantity]
             );
-        }else{
+        }else{ //Kalau product nya udah ada di cart, ditambah ke quantity nya
             $total = DB::table('cartitems')->select('quantity')->where('product_id',$id)->first()->quantity;
             $total = $total + $quantity;
             
@@ -50,6 +59,7 @@ class CartController extends Controller{
         return redirect('/');
     }
 
+    //Delete product dr cart
     public function delete($id){
         $user_id = Auth::id();
         
@@ -57,8 +67,11 @@ class CartController extends Controller{
         return back();
     }
 
+    //Update quantity product di cart
     public function update($id, Request $request){
         $user_id = Auth::id();
+
+        //Validasi quantitynya gaboleh kurang dr 1
         $request->validate([
             'quantity' => 'numeric|min:1',
         ]);
@@ -76,13 +89,18 @@ class CartController extends Controller{
     public function checkout(){
         $user_id = Auth::user()->id;
 
+        //Masukin data transaction nya, dengan date hari ini
+        //Id nya diambil dimasukin ke variable
         $transaction_id = DB::table('transactions')->insertGetId([
             'user_id' => $user_id,
             'transaction_date' => date('Y-m-d H:i:s')
         ]);
 
+        //Ambil data product yang ada di cart
         $products = DB::table('cartitems')->where('user_id',$user_id)->get();
 
+        //Foreach sebanyak product
+        //Data product dimasukin ke array
         foreach($products as $i => $products){
             $arr[] = [
                 'transaction_id' => $transaction_id,
@@ -91,7 +109,10 @@ class CartController extends Controller{
             ];
         }
 
+        //Insert data array ke transactionDetails
         DB::table('transactiondetails')->insert($arr);
+
+        //Hapus cart user
         DB::delete('delete from cartitems where user_id = ?',[$user_id]);
 
         return back();
