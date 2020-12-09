@@ -19,7 +19,6 @@ class GuestCheck
         if(\Illuminate\Support\Facades\Auth::check()) {
             $userRoles = Auth::user()->roles->pluck('name');
 
-            //kalo misalnya user yang sudah login tidak punya role user, redirect ke no-access page
             if(!$userRoles->contains('user')){
             return redirect('/admin-no-access');
             }

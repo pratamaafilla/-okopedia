@@ -20,7 +20,20 @@ class ProductController extends Controller
         return view('home', compact('products','count'));
     }
 
-    public function index(Request $request)
+    public function index_user(Request $request)
+    {
+        $user_id = Auth::id();
+        $count = DB::table('cartitems')->where('user_id',$user_id)->count();
+        
+        if(count($request->all()) > 0){
+            return $this->search($request);
+        }else{
+            $products = Product::paginate(3);
+            return view('user_home', compact('products','count'));
+        }
+    }
+    
+    public function index_guest(Request $request)
     {
         $user_id = Auth::id();
         $count = DB::table('cartitems')->where('user_id',$user_id)->count();

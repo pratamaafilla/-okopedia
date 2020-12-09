@@ -64,6 +64,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         //declare middleware admin dengan class AdminCheck supaya bisa dipake di route
         'admin' => \App\Http\Middleware\AdminCheck::class,
+        //declare middleware admin dengan class AdminCheck supaya bisa dipake di route
+        'user'=> \App\Http\Middleware\UserCheck::class,
+        //declare middleware admin dengan class AdminCheck supaya bisa dipake di route
         'guestMiddleware' => \App\Http\Middleware\GuestCheck::class,
     ];
 }
