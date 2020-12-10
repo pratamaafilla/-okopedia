@@ -27,7 +27,7 @@ class LoginController extends Controller
         $user = Auth::user()->roles->pluck('name');
 
         if (!$user->contains('admin')) {
-            return redirect('/');
+            return redirect('/user-page');
         }
 
         return redirect('/admin-page');

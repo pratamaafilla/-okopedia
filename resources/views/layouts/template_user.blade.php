@@ -16,7 +16,7 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-lg navigation-clean-search">
-        <div class="container"><a class="navbar-brand text-success" href="{{url('/')}}"
+        <div class="container"><a class="navbar-brand text-success" href="{{url('/user-page')}}"
                 style="margin-left: 10px;">$okopedia</a><button data-toggle="collapse" data-target="#navcol-2"
                 class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span
                     class="navbar-toggler-icon"></span></button>
@@ -34,27 +34,14 @@
             <div class="collapse navbar-collapse d-lg-flex d-xl-flex justify-content-lg-end align-items-lg-center justify-content-xl-end align-items-xl-center"
                 id="navcol-2">
                 <ul class="nav navbar-nav text-right d-xl-flex ml-auto justify-content-xl-center align-items-xl-center">
-
-                    @guest
-                    <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
-                            class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center"
-                            style="color: rgb(129,129,129);" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                    @if(Route::has('register'))
-                    <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"><a
-                            class="nav-link d-lg-flex justify-content-lg-center align-items-lg-center"
-                            style="color: rgb(129,129,129);" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                    @endif
-                    @else
-                    
                     <li class="nav-item" role="presentation" style="margin-right: 5px;">
-                        <a class="nav-link" href="{{url ('/cart')}}">
+                        <a class="nav-link" href="{{url ('/user/cart')}}">
                             <img style="width: 25px;" src="{{ asset('assets/img/icons8-shopping-cart-64.png')}}">
                             <span class='badge badge-success' id='lblCartCount'> {{$count}} </span>
                         </a>
                     </li>
                     <li class="nav-item d-lg-flex align-items-lg-center" role="presentation"
-                        style="margin-left: 0px;margin-right: 10px;"><a href="{{url('/history')}}" style="color: white;" class="btn btn-success btn-sm"
+                        style="margin-left: 0px;margin-right: 10px;"><a href="{{url('user/history')}}" style="color: white;" class="btn btn-success btn-sm"
                             type="button">History</a></li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -75,7 +62,6 @@
 
                         </div>
                     </li>
-                    @endguest
                 </ul>
             </div>
         </div>

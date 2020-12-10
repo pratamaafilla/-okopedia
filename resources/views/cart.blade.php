@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.template_user')
 
 @section('content')
 
@@ -38,7 +38,7 @@
                             </p>
                             <p class="card-text">
                                 <button class="btn btn-success btn-sm" type="submit">Update</button>
-                                <a href="{{url('/cart/delete/'.$p->cart_item_id)}}" class="btn btn-danger btn-sm"
+                                <a href="{{url('user/cart/delete/'.$p->cart_item_id)}}" class="btn btn-danger btn-sm"
                                     type="submit">Delete</a>
                             </p>
                         </div>
@@ -59,7 +59,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mx-auto">
                     <li class="nav-item" role="presentation">
-                        <a href="{{url('/cart/checkout')}}" class="btn btn-success" type="submit"
+                        <a href="{{url('user/cart/checkout')}}" class="btn btn-success" type="submit"
                             style="color: white; width: 350px;">Checkout</a>
                     </li>
                 </ul>

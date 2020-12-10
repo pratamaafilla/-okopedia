@@ -56,7 +56,7 @@ class CartController extends Controller{
             
             DB::update('update cartitems set quantity = ? where product_id = ?', [$total ,$id]);
         }
-        return redirect('/');
+        return redirect('/user-page');
     }
 
     //Delete product dr cart

@@ -14,29 +14,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+Route::group(['middleware' => 'guestMiddleware'], function () {
+    Route::get('/','ProductController@index_guest');
+});
 
-Route::get('/','ProductController@index');
 
 //middleware pertama ini untuk cek user authenticated (login) tau belum, kalau sudah dia bisa akses route /user
 Route::group(['middleware' => 'auth'], function () {
-    //middleware kedua nested karena untuk cek logged in user punya role admin atau tidak, kalau punya user bisa akses route /admin
-    Route::get('/user-no-access','NoAccessController@userNoAccess');
-    Route::get('/admin-no-access','NoAccessController@adminNoAccess');
-
-    Route::get('/product/{id}','ProductController@product');
-    Route::post('/product/{id}','CartController@add_to_cart');
-
-    Route::get('/cart','CartController@index');
-    Route::get('/cart/checkout','CartController@checkout');
+    //middleware ini untuk cek logged in user punya role user (member) atau tidak, kalau punya, user bisa akses route /user
+    Route::group(['middleware' => 'user'], function (){
+        Route::get('/user-no-access','NoAccessController@userNoAccess');
+        Route::get('/user-page', 'ProductController@index_user');
     
-    Route::get('/cart/delete/{id}','CartController@delete');
-    Route::get('/cart/{id}','CartController@update');
-
-    Route::get('/history','TransactionController@index');
-    Route::get('/history/{id}','TransactionController@transaction_detail');
-
-    //middleware kedua nested karena untuk cek logged in user punya role admin atau tidak, kalau punya, user bisa akses route /admin
+        Route::get('user/product/{id}','ProductController@product');
+        Route::post('user/product/{id}','CartController@add_to_cart');
+    
+        Route::get('user/cart','CartController@index');
+        Route::get('user/cart/checkout','CartController@checkout');
+        
+        Route::get('user/cart/delete/{id}','CartController@delete');
+        Route::get('/cart/{id}','CartController@update');
+    
+        Route::get('user/history','TransactionController@index');
+        Route::get('user/history/{id}','TransactionController@transaction_detail');
+    });
+    
+    //middleware ini untuk cek logged in user punya role admin atau tidak, kalau punya, user bisa akses route /admin
     Route::group(['middleware' => 'admin'], function () {
+        Route::get('/admin-no-access','NoAccessController@adminNoAccess');
+
         Route::get('/admin-page','ProductController@index_admin');
         Route::get('/delete/{id}','ProductController@index_admin_delete');
         Route::get('/admin/category_list','ProductController@index_admin_categorylist');

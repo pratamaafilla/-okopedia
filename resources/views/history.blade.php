@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.template_user')
 
 @section('content')
 
@@ -15,7 +15,7 @@
                 @foreach($transactions as $t)
                 <tr>
                     <td><a class="text-secondary"
-                            href="{{url('/history/'.$t->transaction_id)}}">{{$t->transaction_date}}</a>
+                            href="{{url('user/history/'.$t->transaction_id)}}">{{$t->transaction_date}}</a>
                     </td>
                 </tr>
                 @endforeach
